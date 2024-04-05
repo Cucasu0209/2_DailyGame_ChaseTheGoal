@@ -8246,6 +8246,7 @@ GameObject:
   - component: {fileID: 5866666020081462800}
   - component: {fileID: 5866666020081462799}
   - component: {fileID: 5866666020081462798}
+  - component: {fileID: 5866666020081462802}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -9698,7 +9699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba120e249c70daa4b825d15bffb37749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunningSpeed: 7
+  Speed: 7
 --- !u!114 &5866666020081462799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9717,7 +9718,7 @@ MonoBehaviour:
   GroundMask:
     serializedVersion: 2
     m_Bits: 1
-  GroundYOffset: 0
+  GroundYOffset: -0.3
   ForwardAxis: {fileID: 509059649}
 --- !u!136 &5866666020081462800
 CapsuleCollider:
@@ -9768,6 +9769,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &5866666020081462802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147762261709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4651e0066cc3af14282e732c66114da0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpForce: 20
 --- !u!4 &5901452233835783924
 Transform:
   m_ObjectHideFlags: 0

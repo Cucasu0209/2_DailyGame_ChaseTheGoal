@@ -5,7 +5,7 @@ using DG.Tweening;
 public class PlayerController : MonoBehaviour
 {
     private Animator PlayerAnimator;
-   [HideInInspector] public CharacterController CharController;
+    [HideInInspector] public CharacterController CharController;
 
     [Header("Gravity")]
     [SerializeField] public float Gravity = -50;
@@ -32,13 +32,15 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Animation
-    public void SetSpeedAnim(float speed)
+    float LastSpeed = 0;
+    public void SetSpeed(float speed)
     {
-        PlayerAnimator.SetFloat("hzVeloc", speed);
+        LastSpeed = Mathf.Lerp(LastSpeed, speed, 15 * Time.deltaTime);
+        PlayerAnimator.SetFloat("speed", LastSpeed);
     }
-    public void SetIsGroundedAnim(bool isGrounded)
+    public void SetJumpAnim()
     {
-        //PlayerAnimator.SetBool("grounded", isGrounded);
+        PlayerAnimator.SetTrigger("jump");
     }
     #endregion
 
@@ -48,10 +50,8 @@ public class PlayerController : MonoBehaviour
         Vector3 SpherePos = transform.position - Vector3.up * GroundYOffset;
         if (Physics.CheckSphere(SpherePos, CharController.radius - 0.05f, GroundMask))
         {
-            SetIsGroundedAnim(true);
             return true;
         }
-        SetIsGroundedAnim(false);
         return false;
     }
     void ApplyGravity()

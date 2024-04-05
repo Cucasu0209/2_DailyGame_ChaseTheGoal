@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float Speed = 5;
-    [SerializeField] private float RunningSpeed = 7;
+    [SerializeField] private float Speed = 7;
+
     private PlayerController Controller;
     private void Start()
     {
-        Speed = RunningSpeed;
         Controller = GetComponent<PlayerController>();
         UserInputController.Instance.OnMovementJoystick += MovePlayer;
     }
@@ -30,10 +29,10 @@ public class PlayerMovement : MonoBehaviour
                 if (currentRotation < 180) currentRotation += 360;
                 else rotation += 360;
             }
-            transform.eulerAngles = Vector3.up * Mathf.Lerp(currentRotation, rotation, 1 * Time.deltaTime);
+            transform.eulerAngles = Vector3.up * Mathf.Lerp(currentRotation, rotation, 10 * Time.deltaTime);
             Controller.CharController.Move(transform.forward * Speed * Time.deltaTime);
         }
-        Controller.SetSpeedAnim(MoveInput.magnitude);
+        Controller.SetSpeed(MoveInput.magnitude);
     }
 }
 
